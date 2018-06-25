@@ -65,6 +65,7 @@ var ModalBox = createReactClass({
     easing: PropTypes.func,
     coverScreen: PropTypes.bool,
     keyboardTopOffset: PropTypes.number,
+    isArab: PropTypes.bool,
 
     onClosed: PropTypes.func,
     onOpened: PropTypes.func,
@@ -86,6 +87,7 @@ var ModalBox = createReactClass({
       backButtonClose: false,
       easing: Easing.elastic(0.8),
       coverScreen: false,
+      isArab: false,
       keyboardTopOffset: Platform.OS == 'ios' ? 22 : 0
     };
   },
@@ -423,7 +425,18 @@ var ModalBox = createReactClass({
     return (
       <Animated.View
         onLayout={this.onViewLayout}
-        style={[styles.wrapper, size, this.props.style, {transform: [{translateY: this.state.position}, {translateX: offsetX}]} ]}
+        style={[
+          styles.wrapper,
+          size,
+          this.props.style,
+          {
+            transform: [
+              { translateY: this.state.position },
+              // 阿拉伯语言下调整
+              { translateX: this.props.isArab ? -offsetX : offsetX }
+            ]
+          }
+        ]}
         {...this.state.pan.panHandlers}>
         {this.props.children}
       </Animated.View>

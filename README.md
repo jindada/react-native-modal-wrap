@@ -1,9 +1,14 @@
-# react-native-modalbox
+# react-native-modalbox-wrap
 
-[![npm](https://img.shields.io/npm/dm/react-native-modalbox.svg?maxAge=2592000)]()
-[![npm](https://img.shields.io/npm/dt/react-native-modalbox.svg?maxAge=2592000)]()   
+## compare react-native-modalbox
 
-A react native <Modal> component, easy, fully customizable, implementing the 'swipe down to close' feature.
+> 1.解决安卓原生后退键无效的问题
+> 2.解决阿拉伯下位置偏移的问题
+
+[![npm](https://img.shields.io/npm/dm/react-native-modalbox-wrap.svg?maxAge=2592000)]()
+[![npm](https://img.shields.io/npm/dt/react-native-modalbox-wrap.svg?maxAge=2592000)]()   
+
+A react native <Modal> component, fork [react-native-modalbox]
 
 ## Preview
 ![](https://i.imgur.com/QTAYh81.gif)
@@ -11,7 +16,7 @@ A react native <Modal> component, easy, fully customizable, implementing the 'sw
 
 ## Install
 
-`npm install react-native-modalbox@latest --save`
+`npm install react-native-modalbox-wrap@latest --save`
 
 ## Example
 Check [index.js](https://github.com/maxs15/react-native-modalbox/blob/master/Example/index.ios.js) in the Example folder.
@@ -36,7 +41,8 @@ Check [index.js](https://github.com/maxs15/react-native-modalbox/blob/master/Exa
 | easing | Easing.elastic(0.8) | `function` | Easing function applied to opening modal animation
 | backButtonClose | false | `bool` | (Android only) Close modal when receiving back button event
 | startOpen | false | `bool` | Allow modal to appear open without animation upon first mount
-| coverScreen | false | `bool` | Will use RN `Modal` component to cover the entire screen wherever the modal is mounted in the component hierarchy
+| coverScreen | false | `bool` | Will use RN `Modal` component to cover the entire screen wherever the modal is mounted in the component 
+| isArab | false | `bool` | 是否是阿拉伯环境 
 | keyboardTopOffset | ios:22, android:0 | `number` | This property prevent the modal to cover the ios status bar when the modal is scrolling up because the keyboard is opening
 
 ## Events
