@@ -14,7 +14,8 @@ var {
   BackHandler,
   Platform,
   Modal,
-  Keyboard
+  Keyboard,
+  I18nManager
 } = require('react-native');
 
 var createReactClass = require('create-react-class');
@@ -65,7 +66,6 @@ var ModalBox = createReactClass({
     easing: PropTypes.func,
     coverScreen: PropTypes.bool,
     keyboardTopOffset: PropTypes.number,
-    isArab: PropTypes.bool,
 
     onClosed: PropTypes.func,
     onOpened: PropTypes.func,
@@ -87,7 +87,6 @@ var ModalBox = createReactClass({
       backButtonClose: false,
       easing: Easing.elastic(0.8),
       coverScreen: false,
-      isArab: false,
       keyboardTopOffset: Platform.OS == 'ios' ? 22 : 0
     };
   },
@@ -433,7 +432,7 @@ var ModalBox = createReactClass({
             transform: [
               { translateY: this.state.position },
               // 阿拉伯语言下调整
-              { translateX: this.props.isArab ? -offsetX : offsetX }
+              { translateX: I18nManager.isRTL ? -offsetX : offsetX }
             ]
           }
         ]}
