@@ -27,7 +27,7 @@ var screen = Dimensions.get('window');
 var styles = StyleSheet.create({
 
   wrapper: {
-    backgroundColor: "white"
+    backgroundColor: "#fff"
   },
 
   transparent: {
@@ -80,10 +80,10 @@ var ModalBox = createReactClass({
       swipeThreshold: 50,
       position: "center",
       backdrop: true,
-      backdropOpacity: 0.5,
+      backdropOpacity: 0.4,
       backdropColor: "black",
       backdropContent: null,
-      animationDuration: 400,
+      animationDuration: 200,
       backButtonClose: false,
       easing: Easing.elastic(0.8),
       coverScreen: false,
@@ -131,9 +131,9 @@ var ModalBox = createReactClass({
   },
 
   componentWillReceiveProps: function(props) {
-     if(this.props.isOpen != props.isOpen){
-        this.handleOpenning(props);
-     }
+    if(this.props.isOpen != props.isOpen){
+      this.handleOpenning(props);
+    }
   },
 
   handleOpenning: function(props) {
@@ -180,7 +180,8 @@ var ModalBox = createReactClass({
       this.state.backdropOpacity,
       {
         toValue: 1,
-        duration: this.props.animationDuration
+        duration: this.props.animationDuration,
+        useNativeDriver: true
       }
     );
     this.state.animBackdrop.start(() => {
@@ -202,7 +203,8 @@ var ModalBox = createReactClass({
       this.state.backdropOpacity,
       {
         toValue: 0,
-        duration: this.props.animationDuration
+        duration: this.props.animationDuration,
+        useNativeDriver: true
       }
     );
     this.state.animBackdrop.start(() => {
@@ -244,6 +246,7 @@ var ModalBox = createReactClass({
           toValue: this.state.positionDest,
           duration: this.props.animationDuration,
           easing: this.props.easing,
+          useNativeDriver: true
         }
       );
       this.state.animOpen.start(() => {
@@ -280,7 +283,8 @@ var ModalBox = createReactClass({
       this.state.position,
       {
         toValue: this.props.entry === 'top' ? -this.state.containerHeight : this.state.containerHeight,
-        duration: this.props.animationDuration
+        duration: this.props.animationDuration,
+        useNativeDriver: true
       }
     );
     this.state.animClose.start(() => {
